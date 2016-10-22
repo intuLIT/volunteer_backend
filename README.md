@@ -8,3 +8,11 @@ The EC2 instance can be SSHed into through the folloing command from /login. It 
 <code>
 ssh -i intulit.pem bitnami@ec2-54-153-15-7.us-west-1.compute.amazonaws.com
 </code>
+
+### Python Dependencies
+<code>
+pip install django
+pip install mysqlclient
+pip install graphene_django
+pip install django-filter
+</code>
