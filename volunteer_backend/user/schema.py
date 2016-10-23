@@ -36,48 +36,48 @@ class NonProfitNode(DjangoObjectType):
         filter_order_by = ['id',]
         
 
-# class EventNode(DjangoObjectType):
-#     class Meta:
-#         model = Event
-#         # Allow for some more advanced filtering here
-#         filter_fields = {
-#             'id': ['exact'],
-#             'name': ['exact', 'icontains', 'istartswith'],
-#             'start_date': ['icontains'],
-#             'end_date': ['icontains'],
-#             'address': ['icontains', 'exact'],
-#             'location': ['exact'],
-#             'description': ['icontains'],
-#             'photo': ['exact'],
-#             'min_volunteers': ['exact'],
-#             'max_volunteers': ['exact'],
-#             'organization': ['exact', 'icontains', 'istartswith'],
-#         }
-#         filter_order_by = ['organization',]
-#         interfaces = (relay.Node, )
+class EventNode(DjangoObjectType):
+    class Meta:
+        model = Event
+        # Allow for some more advanced filtering here
+        filter_fields = {
+            'id': ['exact'],
+            'name': ['exact', 'icontains', 'istartswith'],
+            'start_date':['exact', 'icontains'],
+            'end_date':['exact',  'icontains'],
+            'address': ['icontains', 'exact'],
+            'location': ['exact',  'icontains'],
+            'description': ['icontains'],
+            'photo': ['exact'],
+            'min_volunteers': ['exact'],
+            'max_volunteers': ['exact'],
+            'organization': ['exact'],
+        }
+        filter_order_by = ['organization',]
+        interfaces = (relay.Node, )
 
-# class CategoryNode(DjangoObjectType):
-#     class Meta:
-#         model = Category
-#         filter_fields = {
-#             'id': ['exact'],
-#             'name': ['exact', 'icontains', 'istartswith'],
-#         }
-#         filter_order_by = ['name',]
-#         interfaces = (relay.Node, )
+class CategoryNode(DjangoObjectType):
+    class Meta:
+        model = Category
+        filter_fields = {
+            'id': ['exact'],
+            'name': ['exact', 'icontains', 'istartswith'],
+        }
+        filter_order_by = ['name',]
+        interfaces = (relay.Node, )
 
 
 class Query(AbstractType):
-    name = "Model"
+    # name = "Model"
     user = Field(UserNode)
     all_users = DjangoFilterConnectionField(UserNode)
 
     nonprofit = Field(NonProfitNode)
     all_nonprofits = DjangoFilterConnectionField(NonProfitNode)
 
-    # event = relay.Node.Field(EventNode)
-    # all_events = DjangoFilterConnectionField(EventNode)
+    event = Field(EventNode)
+    all_events = DjangoFilterConnectionField(EventNode)
 
-    # category = relay.Node.Field(CategoryNode)
-    # all_categories = DjangoFilterConnectionField(CategoryNode)
+    category = relay.Node.Field(CategoryNode)
+    all_categories = DjangoFilterConnectionField(CategoryNode)
 
