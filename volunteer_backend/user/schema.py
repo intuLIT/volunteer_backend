@@ -1,7 +1,7 @@
-from graphene import AbstractType, Field, Node
+from graphene import AbstractType, Field, relay
 from graphene_django.filter import DjangoFilterConnectionField
 from graphene_django.types import DjangoObjectType
-from volunteer_backend.user.models import User
+from volunteer_backend.user.models import User, NonProfit, Event, Category
 
 
 
@@ -10,32 +10,31 @@ from volunteer_backend.user.models import User
 class UserNode(DjangoObjectType):
     class Meta:
         model = User
-        interfaces = (Node, )
-        filter_fields = ['id', 'name', 'email', 'phone', 'location']
-        # filter_fields = {
-        #     'id': ['exact'],
-        #     'name': ['exact', 'icontains', 'istartswith'],
-        #     'email': ['exact'],
-        #     'phone': ['exact', 'icontains', 'istartswith'],
-        #     'location': ['exact']
-        # }
-        # filter_order_by = ['id']
+        interfaces = (relay.Node, )
+        #filter_fields = ['id', 'name', 'email', 'phone', 'location']
+        filter_fields = {
+            'id': ['exact'],
+            'name': ['exact', 'icontains', 'istartswith'],
+            'email': ['exact'],
+            'phone': ['exact', 'icontains', 'istartswith'],
+            'location': ['exact']
+        }
+        filter_order_by = ['id']
 
-
-
-# class NonProfitNode(DjangoObjectType):
-#     class Meta:
-#         model = NonProfit
-#         # Allow for some more advanced filtering here
-#         filter_fields = {
-#             'id': ['exact'],
-#             'name': ['exact', 'icontains', 'istartswith'],
-#             'description': ['icontains'],
-#             'user': ['exact'],
-#             'location': ['exact'],
-#         }
-#         filter_order_by = ['id',]
-#         interfaces = (relay.Node, )
+class NonProfitNode(DjangoObjectType):
+    class Meta:
+        model = NonProfit
+        # Allow for some more advanced filtering here
+        interfaces = (relay.Node, )
+        filter_fields = {
+            'id': ['exact'],
+            'name': ['exact', 'icontains', 'istartswith'],
+            'description': ['icontains'],
+            'user': ['exact'],
+            'location': ['exact'],
+        }
+        filter_order_by = ['id',]
+        
 
 # class EventNode(DjangoObjectType):
 #     class Meta:
@@ -73,10 +72,8 @@ class Query(AbstractType):
     user = Field(UserNode)
     all_users = DjangoFilterConnectionField(UserNode)
 
-    
-    
-    # nonprofit = relay.Node.Field(NonProfitNode)
-    # all_nonprofits = DjangoFilterConnectionField(NonProfitNode)
+    nonprofit = Field(NonProfitNode)
+    all_nonprofits = DjangoFilterConnectionField(NonProfitNode)
 
     # event = relay.Node.Field(EventNode)
     # all_events = DjangoFilterConnectionField(EventNode)
