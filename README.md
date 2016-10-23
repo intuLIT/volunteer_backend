@@ -11,8 +11,8 @@ ssh -i intulit.pem bitnami@ec2-54-153-15-7.us-west-1.compute.amazonaws.com
 
 ### Python Dependencies
 <code>
-pip install django  
-pip install mysqlclient  
-pip install graphene_django  
-pip install django-filter  
+pip install django <br />
+pip install mysqlclient  <br />
+pip install graphene_django  <br />
+pip install django-filter  <br />
 </code>
