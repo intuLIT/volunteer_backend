@@ -22,6 +22,13 @@ pip install graphene_django
 pip install django-filter 
 ```
 
+
+### APIs
+Reverse geocoding system can be found by POSTing to this REST API.
+"""
+api.geonames.org/findNearbyPostalCodesJSON?postalcode=93405&country=US&radius=30&username=demo
+"""```
+
 ### Hacks
 According to one of the issue logs of graphene-django, found a work around for "'order_by' is not compatible with the 'fields' dict syntax. Use OrderingFilter instead." Commenting out the function body at line 375 of .../lib/python2.7/site-packages/django_filters/filterset.py.
 
