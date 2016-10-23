@@ -20,6 +20,7 @@ pip install django
 pip install mysqlclient 
 pip install graphene_django 
 pip install django-filter 
+pip install djangorestframework
 ```
 
 
