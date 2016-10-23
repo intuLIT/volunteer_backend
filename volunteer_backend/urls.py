@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from graphene_django.views import GraphQLView
 
-from cookbook.schema import schema
+from user.schema import schema
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
