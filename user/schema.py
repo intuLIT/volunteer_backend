@@ -2,7 +2,7 @@ from graphene import relay, ObjectType, AbstractType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from volunteer_backend.user.models import *
+from volunteer_backend.user import *
 
 # Graphene will automatically map the Category model's fields onto the CategoryNode.
 # This is configured in the CategoryNode's Meta class (as you can see below)
