@@ -21,3 +21,12 @@ pip install mysqlclient
 pip install graphene_django 
 pip install django-filter 
 ```
+
+### Hacks
+According to one of the issue logs of graphene-django, found a work around for "'order_by' is not compatible with the 'fields' dict syntax. Use OrderingFilter instead." Commenting out the function body at line 375 of .../lib/python2.7/site-packages/django_filters/filterset.py.
+
+```
+def get_ordering_filter(cls, opts, filters):
+         #assert not isinstance(opts.fields, dict), \
+         #    "'order_by' is not compatible with the 'fields' dict syntax. Use OrderingFilter instead."
+```
