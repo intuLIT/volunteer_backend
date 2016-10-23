@@ -1,9 +1,9 @@
 import graphene
 
-import cookbook.ingredients.schema
+import volunteer_backend.user.schema
 
 
-class Query(volunteer_backend.volunteer_backend.schema.Query):
+class Query(volunteer_backend.user.schema.Query, graphene.ObjectType):
     # This class will inherit from multiple Queries
     # as we begin to add more apps to our project
     pass

@@ -3,6 +3,8 @@ from django.contrib import admin
 
 from graphene_django.views import GraphQLView
 
+
+
 # from volunteer_backend.user import schema
 
 urlpatterns = [

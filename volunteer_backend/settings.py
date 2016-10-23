@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'user'
+    'volunteer_backend.user',
+    
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'user.schema.schema' # Where your Graphene schema lives
+    'SCHEMA': 'volunteer_backend.schema.schema' # Where your Graphene schema lives
 }
 
 MIDDLEWARE = [
