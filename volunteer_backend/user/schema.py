@@ -68,7 +68,6 @@ class CategoryNode(DjangoObjectType):
 
 
 class Query(AbstractType):
-    # name = "Model"
     user = Field(UserNode)
     all_users = DjangoFilterConnectionField(UserNode)
 
